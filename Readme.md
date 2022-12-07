@@ -8,8 +8,6 @@ The dataset was obtained from Kaggle:
 
 https://www.kaggle.com/datasets/rush4ratio/video-game-sales-with-ratings
 
-The games-list.csv file was cleaned and separated into five different files, each corresponding to a distinct rating.
-
 The initial data was modified using the python code included. Commas were removed from the data values, and the csv was stripped of null values. The year values were also converted to int so they looked nicer. 
 
 The new data was put in the data.csv file.
