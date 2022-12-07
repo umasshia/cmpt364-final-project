@@ -17,14 +17,26 @@ public class RatingCount {
         extends Mapper<Object, Text, Text, IntWritable>{
 
     private final static IntWritable one = new IntWritable(1);
-    private Text rating = new Text();
+    private Text yearRating = new Text();
+    private String year = new String();
+    private String rating = new String();
 
     public void map(Object key, Text value, Context context
                     ) throws IOException, InterruptedException {
-      StringTokenizer itr = new StringTokenizer(value.toString());
+      StringTokenizer itr = new StringTokenizer(value.toString(), ",");
+      int count = 1;
       while (itr.hasMoreTokens()) {
-        rating.set(itr.nextToken());
-        context.write(rating, one);
+        yearRating.set(itr.nextToken());
+        if(count == 2) {
+                year = itr.nextToken();
+        }
+        count++;
+        if(count == 15){
+                rating = itr.nextToken();
+                yearRating.set(year+rating);
+                context.write(yearRating, one);
+                count = 1;
+        }
       }
     }
   }
@@ -59,3 +71,4 @@ public class RatingCount {
     System.exit(job.waitForCompletion(true) ? 0 : 1);
   }
 }
+
