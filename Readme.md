@@ -42,7 +42,6 @@ The following lines were executed in order to run mapreduce on the data.
 
 ![Getting Started](./rating-count-screenshot.png)
 
-The Screenshot of the output are included in the screenshots folder.
 
 
 
